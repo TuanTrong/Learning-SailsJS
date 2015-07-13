@@ -1,0 +1,31 @@
+<div class="row profile">
+  <div class="col-md-3">
+    <div class="profile-sidebar">
+      <div class="profile-userpic">
+        <img src="http://mooshworld.com/wp-content/uploads/2014/11/1.jpg"
+             class="img-responsive" alt="">
+      </div>
+      <br/>
+
+      <div class="profile-userbuttons text-center">
+        <button type="button" class="btn btn-success btn-sm">Follow</button>
+        <button type="button" class="btn btn-danger btn-sm">Message</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">User profile</div>
+      <div class="panel-body">
+        <p>User name: <%= user.username %></p>
+
+        <p>Email: <%= user.email %></p>
+
+        <p>Signup time: <%= user.createdAt %></p>
+      </div>
+      <div class="panel-footer">
+        <a href="/public/user/edit/<%= user.id %>" class="btn btn-danger">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
