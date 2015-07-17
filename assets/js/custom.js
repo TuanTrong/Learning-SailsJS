@@ -12,7 +12,7 @@ $('#signup-form').validate({
       required: true,
       email: true
     },
-    password: {
+    encryptedPassword: {
       required: true,
       minlength: 6
     },

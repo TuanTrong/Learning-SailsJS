@@ -77,9 +77,17 @@ legend {
 }
 
 /*END SIGNUP*/
-/*validate form*/
+/*VALIDATE FORM*/
 label.error {
   color: red;
   font-style: italic;
   font-weight: normal;
 }
+
+/*END VALIDATE FORM*/
+/*LIST USER PAGE*/
+.table-list {
+  margin: 0 auto;
+  width: 75%;
+}
+/*END LIST USER PAGE*/

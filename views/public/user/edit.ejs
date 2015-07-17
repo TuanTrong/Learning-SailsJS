@@ -1,0 +1,35 @@
+<div class="row profile">
+  <div class="col-md-3">
+    <div class="profile-sidebar">
+      <div class="profile-userpic">
+        <img src="http://mooshworld.com/wp-content/uploads/2014/11/1.jpg"
+             class="img-responsive" alt="">
+      </div>
+      <br/>
+
+      <div class="profile-userbuttons text-center">
+        <button type="button" class="btn btn-success btn-sm">Follow</button>
+        <button type="button" class="btn btn-danger btn-sm">Message</button>
+      </div>
+    </div>
+  </div>
+  <form action="/public/user/update/<%= user.id %>">
+    <div class="col-md-9">
+      <div class="panel panel-success">
+        <div class="panel-heading">Change user profile</div>
+        <div class="panel-body">
+          <p>User name: <input name="username" value="<%= user.username %>" type="text" class="form-control"/></p>
+
+          <p>Email: <input name="email" value="<%= user.email %>" type="email" class="form-control"/></p>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-success" type="submit" onclick="return confirm('Bạn có muốn update ko?');">
+            Update
+          </button>
+          <a href="/public/user/list" class="btn btn-primary">Back</a>
+        </div>
+      </div>
+    </div>
+    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+  </form>
+</div>

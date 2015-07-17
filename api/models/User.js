@@ -17,17 +17,6 @@ module.exports = {
       email: true,
       required: true
     },
-    password: {
-      type: 'string',
-      required: true
-    },
-    confirm_password: {
-      type: 'string',
-      required: true
-    },
-    _csrf: {
-      type: 'string'
-    },
     encryptedPassword: {
       type: 'string'
     },
@@ -35,10 +24,7 @@ module.exports = {
     //toJSON : return JSON object to client
     toJSON: function () {
       var obj = this.toObject();
-      delete obj.password;
-      delete obj.confirm_password;
       delete obj.encryptedPassword;
-      delete obj._csrf;
       return obj;
     }
   }
