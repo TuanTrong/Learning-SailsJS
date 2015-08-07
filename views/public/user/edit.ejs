@@ -2,8 +2,11 @@
   <div class="col-md-3">
     <div class="profile-sidebar">
       <div class="profile-userpic">
-        <img src="http://mooshworld.com/wp-content/uploads/2014/11/1.jpg"
-             class="img-responsive" alt="">
+        <% if(user.admin){ %>
+        <img src="/images/admin-lg.png" class="img-responsive" title="I am an Admin!"/>
+        <% }else{ %>
+        <img src="/images/user-lg.png" class="img-responsive"/>
+        <% } %>
       </div>
       <br/>
 
@@ -21,6 +24,9 @@
           <p>User name: <input name="username" value="<%= user.username %>" type="text" class="form-control"/></p>
 
           <p>Email: <input name="email" value="<%= user.email %>" type="email" class="form-control"/></p>
+          <% if(session.user.admin){ %>
+          <p>Admin:<input type="checkbox" name="admin" <%= user.admin == true ? "checked" : "" %>/></p>
+          <% } %>
         </div>
         <div class="panel-footer">
           <button class="btn btn-success" type="submit" onclick="return confirm('Bạn có muốn update ko?');">

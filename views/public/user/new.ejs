@@ -7,13 +7,13 @@
         <% if(flash && flash.err) { %>
         <ul class="alert alert-success">
           <% Object.keys(flash.err).forEach(function(error) { %>
-          <li><%- JSON.stringify(flash.err[error]) %></li>
+          <li><%- JSON.stringify(flash.err[error].message) %></li>
           <% }) %>
         </ul>
         <% } %>
         <input type="text" name="username" class="form-control input-lg" placeholder="User Name"/>
         <input type="email" name="email" class="form-control input-lg" placeholder="Your Email"/>
-        <input type="password" name="encryptedPassword" id="password" class="form-control input-lg" placeholder="Password"/>
+        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password"/>
         <input type="password" name="confirm_password" class="form-control input-lg" placeholder="Confirm Password"/>
         <input type='hidden' name='_csrf' value='<%= _csrf %>'>
         <br/>

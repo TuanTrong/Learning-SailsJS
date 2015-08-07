@@ -2,8 +2,11 @@
   <div class="col-md-3">
     <div class="profile-sidebar">
       <div class="profile-userpic">
-        <img src="http://mooshworld.com/wp-content/uploads/2014/11/1.jpg"
-             class="img-responsive" alt="">
+        <% if(user.admin){ %>
+        <img src="/images/admin-lg.png" class="img-responsive" title="I am an Admin!"/>
+        <% }else{ %>
+        <img src="/images/user-lg.png" class="img-responsive"/>
+        <% } %>
       </div>
       <br/>
 
@@ -25,7 +28,9 @@
       </div>
       <div class="panel-footer">
         <a href="/public/user/edit/<%= user.id %>" class="btn btn-danger">Edit</a>
-        <a href="/public/user/list" class="btn btn-primary">Back</a>
+        <% if(session.user.admin){ %>
+        <a href="/public/user/list" class="btn btn-primary">View all users</a>
+        <% } %>
       </div>
     </div>
   </div>

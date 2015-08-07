@@ -4,6 +4,7 @@
     <th>Id</th>
     <th>User Name</th>
     <th>Email Name</th>
+    <th></th>
     <th>Show</th>
     <th>Edit</th>
     <th>Delete</th>
@@ -22,6 +23,13 @@
     <td><%= user.id %></td>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
+    <td>
+      <% if(user.admin){ %>
+      <img src="/images/admin.png"/>
+      <% }else{ %>
+      <img src="/images/user.png"/>
+      <% } %>
+    </td>
     <td><a href="/public/user/show/<%= user.id %>" class="btn btn-primary">Show</a></td>
     <td><a href="/public/user/edit/<%= user.id %>" class="btn btn-warning">Edit</a></td>
     <td>

@@ -1,8 +1,16 @@
 <div class="container">
-  <form class="form-signin form" action="/public/user/login" method="post">
+  <form class="form-signin form" action="/public/user/doLogin" method="POST">
     <h2 class="form-signin-heading">Please sign in</h2>
-    <input name="username" type="text" id="inputEmail" class="form-control" placeholder="User name" autofocus="true">
+    <% if(flash && flash.err) { %>
+    <ul class="alert alert-success">
+      <% Object.keys(flash.err).forEach(function(error) { %>
+      <li><%- JSON.stringify(flash.err[error].message) %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    <input name="email" type="text" id="inputEmail" class="form-control" placeholder="Email" autofocus="true">
     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password">
+    <input type='hidden' name='_csrf' value='<%= _csrf %>'>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div>
