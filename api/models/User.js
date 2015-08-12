@@ -14,7 +14,7 @@ module.exports = {
     },
     email: {
       type: 'string',
-      email: true,
+      //email: true,
       required: true
     },
     encryptedPassword: {
@@ -24,20 +24,23 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
+    online: {
+      type: 'boolean',
+      defaultsTo: false
+    }
     //Custom attr method
     //toJSON : return JSON object to client
-    toJSON: function () {
-      var obj = this.toObject();
-      //delete obj.encryptedPassword;
-      return obj;
-    }
+    //toJSON: function () {
+    //  var obj = this.toObject();
+    //  //delete obj.encryptedPassword;
+    //  return obj;
+    //}
   },
   beforeValidation: function (values, next) {
     //Add admin value for right
     //Checkbox chỉ khi được check thì mới gửi giá trị lên controller
     //Nên ta sẽ check nếu có param đó thì nghĩa là được check --> true
     values.admin = typeof values.admin !== 'undefined' ? true : false;
-    sails.log(values.admin);
     next();
   },
   beforeCreate: function (values, next) {

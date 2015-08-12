@@ -90,4 +90,9 @@ label.error {
   margin: 0 auto;
   width: 75%;
 }
+
 /*END LIST USER PAGE*/
+
+.center-content {
+  text-align: center;
+}

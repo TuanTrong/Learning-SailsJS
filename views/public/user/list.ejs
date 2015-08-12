@@ -1,6 +1,7 @@
 <table class="table table-list table-hover table-striped">
   <thead>
   <tr>
+    <th></th>
     <th>Id</th>
     <th>User Name</th>
     <th>Email Name</th>
@@ -13,21 +14,28 @@
   <tfoot>
   <tr>
     <td colspan="100%">
-      <a href="/public/user/gen" class="btn btn-success pull-right" style="margin-right: 10px;">Generate Test Data</a>
+      <a href="/public/user/gen" class="btn btn-success pull-right">Generate Test Data</a>
     </td>
   </tr>
   </tfoot>
   <tbody>
   <% users.forEach(function(user){ %>
   <tr>
+    <td class="center-content">
+      <% if(user.online){ %>
+      <i class="fa fa-2x fa-smile-o"></i>
+      <% }else{ %>
+      <i class="fa fa-2x fa-frown-o"></i>
+      <% } %>
+    </td>
     <td><%= user.id %></td>
     <td><%= user.username %></td>
     <td><%= user.email %></td>
-    <td>
+    <td class="center-content">
       <% if(user.admin){ %>
-      <img src="/images/admin.png"/>
+      <i class="fa fa-2x fa-user-secret"></i>
       <% }else{ %>
-      <img src="/images/user.png"/>
+      <i class="fa fa-2x fa-user"></i>
       <% } %>
     </td>
     <td><a href="/public/user/show/<%= user.id %>" class="btn btn-primary">Show</a></td>

@@ -40,6 +40,7 @@ module.exports.policies = {
     'show': 'user',
     'edit': 'user',
     'update': 'user',
+    'logout': 'user',
     '*': 'admin'
   }
 };

@@ -21,8 +21,14 @@ module.exports = {
         //Phải gọi redirect ở đây, không được dùng res.view
         return res.redirect('public/user/new');
       }
+      user.online = true;
       req.session.user = user;
-      return res.redirect('public/user/show/' + user.id);
+      user.save(function (err, user) {
+        if (err) {
+          return next(err);
+        }
+        return res.redirect('public/user/show/' + user.id);
+      });
     });
   },
   show: function (req, res, next) {
@@ -150,18 +156,38 @@ module.exports = {
           return res.redirect('public/user/login');
         },
         success: function () {
+          user.online = true;
           req.session.user = user;
-          if (req.session.user.admin) {
-            return res.redirect('public/user/list');
-          }
-          return res.redirect('public/user/show/' + user.id);
+          user.save(function (err, user) {
+            if (err) {
+              return next(err);
+            }
+            if (user.admin) {
+              return res.redirect('public/user/list');
+            }
+            return res.redirect('public/user/show/' + user.id);
+          });
+          //User.update(user.id, {online: true}, function (err, users) {
+          //
+          //});
         }
       });
     });
   },
   logout: function (req, res, next) {
-    req.session.destroy();
-    return res.redirect('public/user/login');
+    User.findOne(req.session.user.id, function (err, user) {
+      user.online = false;
+      user.save(function (err, user) {
+        if (err) {
+          return next(err);
+        }
+        req.session.destroy();
+        return res.redirect('public/user/login');
+      });
+    });
+    //User.update(req.session.user.id, {online: false}, function (err) {
+    //
+    //});
   }
 };
 
